@@ -41,10 +41,13 @@ Experimental Pragma Directives
 
 pragma experimental SMTChecker;
 pragma experimental ABIEncoderV2;
+pragma experimental "ABIEncoderV2";
 
 ---
 
 (source_file
+  (pragma_directive
+    (experimental_directive))
   (pragma_directive
     (experimental_directive))
   (pragma_directive

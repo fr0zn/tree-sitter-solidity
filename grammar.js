@@ -76,7 +76,7 @@ module.exports = grammar({
 
         experimental_directive: $ => seq(
             "experimental",
-            $._experimental_directives,
+            seq(optional('"'),$._experimental_directives,optional('"')),
         ),
 
         solidity_directive: $ => seq(
