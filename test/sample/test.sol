@@ -10,6 +10,9 @@ pragma solidity =0.4.4;
 pragma solidity 0.4;
 pragma solidity >=0.5.0 <0.7.0;
 
+pragma experimental SMTChecker;
+pragma experimental ABIEncoderV2;
+
 library a {}
 library b {}
 library c {}
