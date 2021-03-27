@@ -1,0 +1,46 @@
+====================
+Single Line Comment
+====================
+
+// Comment single
+contract StandardToken {
+}
+/* Single comment */
+
+---
+
+
+(source_file 
+  (comment) 
+  (contract_declaration 
+  name: (identifier) 
+  body: (contract_body))
+  (comment)
+)
+
+====================
+Multi Line Comment 
+====================
+
+/* Multi 
+line comment */
+
+/* 
+@ Multi 
+line comment 
+*/
+contract StandardToken {
+  /**
+  @ Multi line comment 
+  */
+}
+
+---
+
+
+(source_file 
+  (comment) 
+  (comment) 
+  (contract_declaration 
+  name: (identifier) 
+  body: (contract_body (comment))))

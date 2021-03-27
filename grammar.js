@@ -1000,16 +1000,15 @@ module.exports = grammar({
             )
         ),
         
-
         comment: $ => token(
             prec(PREC.COMMENT, 
                 choice(
                     seq('//', /.*/),
                     seq(
                         '/*',
-                        /.*/,
-                        '*/'
-                    )       
+                        /[^*]*\*+([^/*][^*]*\*+)*/,
+                        '/'
+                    )
                 )
             )
         ),
