@@ -207,7 +207,7 @@ contract test {
 contract test {
     function fun(uint256 a) {
         if (a >= 8) {
-            return;
+            return ;
         } else {
             var b = 7;
         }
@@ -305,12 +305,15 @@ contract c {
 contract C {
     function f() {
         var (a,b,c) = g();
+        (a,b,c) = g();
         var (d) = 2;
         var (,e) = 3;
         var (f,) = 4;
         var (x,,) = g();
         var (,y,) = g();
         var (,,) = g();
+        var (x,,,) = g();
+        (x,,,) = g();
     }
     function g() returns (uint, uint, uint) {}
 }
@@ -568,6 +571,7 @@ contract test {
   // uint y5 = 0.0025 * 1e18;
   uint z = 0x11_22;
   uint z2 = 0x1122;
+  uint z3 = 1_122;
 }
 
 contract test {
@@ -743,5 +747,60 @@ contract PayableAddress {
     function payableFn() public pure {
         address x;
         address y = payable(x);
+    }
+}
+
+contract StructInline {
+
+    function _set(Map storage map) public pure {
+        map._entries.push(MapEntry({ _key: key, _value: value }));
+    }
+
+}
+
+contract Example{
+    event Log1_fnc(function() external callback);
+    function query1_fnc(function() external _fnc) external {}
+}
+
+contract Example{
+    function test() external {
+        assembly {
+            // underscore yul identifier with numbers
+            mstore(add(sessionKeyHash, 0x20), sessionKeyHash_bytes32)
+        }
+    }
+}
+
+contract Example{
+
+    function test() external {
+        assembly {
+			function power(a, exponent) -> result {
+                switch exponent
+                case 0 { result := 1 }
+                case 1 { result := a }
+                default {
+                    result := power(mul(a, a), div(exponent, 2))
+                    switch mod(exponent, 2)
+                    case 1 {
+                    result := mul(a, result)
+                    leave
+                    }
+                }
+            }
+        }
+    }
+}
+
+contract Example {
+    function test() external {
+        uint256 x = 1234;
+        unchecked {
+            x += 2;
+        }
+        unchecked {
+            x += 2;
+        }
     }
 }
