@@ -78,6 +78,13 @@ module.exports = grammar({
             "experimental",
             seq(optional('"'),$._experimental_directives,optional('"')),
         ),
+        _abicoder_directives: $ => choice(
+            "v2",
+        ),
+        abicoder_directive: $ => seq(
+            "abicoder",
+            seq(optional('"'),$._abicoder_directives,optional('"')),
+        ),
 
         solidity_directive: $ => seq(
             "solidity",
@@ -89,7 +96,8 @@ module.exports = grammar({
             "pragma",
             choice(
                 $.solidity_directive,
-                $.experimental_directive
+                $.experimental_directive,
+                $.abicoder_directive
             ),
             $._semicolon,
         ),
